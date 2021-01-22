@@ -2,7 +2,7 @@ module Jets::CommonMethods
   extend Memoist
   # Add API Gateway Stage Name
   def add_stage_name(url)
-    Jets::Controller::Stage.add(request.host, url) if request
+    request ? Jets::Controller::Stage.add(request.host, url) : url
   end
 
   def on_aws?
